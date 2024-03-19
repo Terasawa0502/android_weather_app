@@ -8,44 +8,4 @@
     android:orientation="vertical"
     tools:context=".ui.MainActivity">
 
-    <TextView
-        android:id="@+id/city"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textAlignment="center"
-        android:text="都市名"
-        android:textSize="34sp" />
-
-    <ImageView
-        android:id="@+id/weather_icon"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
-    <TextView
-        android:id="@+id/weather"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textAlignment="center"
-        android:text="天気"
-        android:layout_marginTop="24dp"
-        android:textSize="34sp" />
-
-    <TextView
-        android:id="@+id/maximum"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textAlignment="center"
-        android:text="最高気温"
-        android:layout_marginTop="24dp"
-        android:textSize="24sp" />
-
-    <TextView
-        android:id="@+id/minimum"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textAlignment="center"
-        android:text="最低気温"
-        android:layout_marginTop="24dp"
-        android:textSize="24sp" />
-
 </LinearLayout>
