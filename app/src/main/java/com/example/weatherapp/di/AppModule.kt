@@ -1,6 +1,10 @@
 package com.example.weatherapp.di
 
 import com.example.weatherapp.data.remote.WeatherApi
+import com.example.weatherapp.domain.repository.WeatherRepository
+import com.example.weatherapp.domain.repository.WeatherRepositoryImpl
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,10 +22,20 @@ object AppModule  {
     @Provides
     @Singleton
     fun provideWeatherApi(): WeatherApi {
+        val moshi = Moshi.Builder()
+            .add(KotlinJsonAdapterFactory())
+            .build()
+
         return Retrofit.Builder()
             .baseUrl("https://api.openweathermap.org/")
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
             .create()
+    }
+
+    @Provides
+    @Singleton
+    fun provideWeatherRepository(api: WeatherApi): WeatherRepository {
+        return WeatherRepositoryImpl(api)
     }
 }

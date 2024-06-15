@@ -11,17 +11,16 @@ android {
     compileSdk 33
 
     defaultConfig {
+        def properties = new Properties()
+        properties.load(project.rootProject.file('local.properties').newInputStream())
+        def appId = properties.getProperty("appId")
         applicationId "com.example.weatherapp"
         minSdk 29
         targetSdk 33
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        def properties = new Properties()
-        properties.load(project.rootProject.file('local.properties').newDataInputStream())
-        def API_KEY = properties.getProperty("API_KEY")
-        buildConfigField("String", "API_KEY", "\"${API_KEY}\"")
+        buildConfigField("String", "APP_ID", "${appId}")
     }
 
     buildTypes {
@@ -31,13 +30,13 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_18
-        targetCompatibility JavaVersion.VERSION_18
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile) {
         kotlinOptions {
-            jvmTarget = '18'
+            jvmTarget = '17'
         }
     }
 }
@@ -67,6 +66,12 @@ dependencies {
     def hilt_version = '2.44'
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+
+    // ktx
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0"
+    implementation "androidx.activity:activity-ktx:1.5.0"
+    implementation "androidx.fragment:fragment-ktx:1.5.0"
+    implementation "androidx.savedstate:savedstate-ktx:1.2.1"
 }
 
 secrets {

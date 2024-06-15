@@ -1,5 +1,6 @@
 package com.example.weatherapp.domain.repository
 
+import com.example.weatherapp.BuildConfig
 import com.example.weatherapp.data.WeatherInfo
 import com.example.weatherapp.data.remote.WeatherApi
 import com.example.weatherapp.domain.util.Resource
@@ -12,7 +13,7 @@ class WeatherRepositoryImpl @Inject constructor(
         return try {
             Resource.Success(
                 api.getWeatherInfo(
-                    appid = ,
+                    appid = BuildConfig.APP_ID,
                     q= q,
                     lang= lang
                 )
