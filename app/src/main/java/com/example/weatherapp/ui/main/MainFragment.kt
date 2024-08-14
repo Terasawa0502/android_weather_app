@@ -71,13 +71,12 @@ class MainFragment @Inject constructor(): Fragment() {
     }
 
     private fun updateDisplay (weatherData: WeatherData) {
-        // TODO 表示更新をする
         todayTimeText.text = weatherData.time.let{ time -> "今日 ${time.hour}:${time.minute}" }
         weatherImage.setImageResource(weatherData.weatherType.iconRes)
         currentTempText.text = getString(R.string.temp_value, weatherData.temperatureCelsius)
         weatherDescriptionText.text = weatherData.weatherType.weatherDesc
         pressureText.text = getString(R.string.pressure_value, weatherData.pressure)
         dropText.text = "${weatherData.humidity}%"
-        windText.text = getString(R.string.wind_value,weatherData.windSpeed)
+        windText.text = getString(R.string.wind_value,weatherData.windSpeed.toInt())
     }
 }

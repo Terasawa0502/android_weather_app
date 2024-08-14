@@ -28,7 +28,7 @@ object AppModule  {
 
         return Retrofit.Builder()
             .baseUrl("https://api.openweathermap.org/")
-            .addConverterFactory(MoshiConverterFactory.create())
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
             .create()
     }
